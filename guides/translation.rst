@@ -1,4 +1,4 @@
-Translations
+Tłumaczenia
 ============
 
 The :namespace:`Symfony\\Component\\Translation` Component provides a way to

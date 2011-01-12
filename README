@@ -1,0 +1,25 @@
+Struktura katalogów
+   .
+   |-contributing
+   |---code
+   |---community
+   |---documentation
+   |-guides
+   |---bundles
+   |---cache
+   |---doctrine
+   |-----dbal
+   |-----migrations
+   |-----mongodb-odm
+   |-----orm
+   |---event
+   |---forms
+   |---internals
+   |---security
+   |---templating
+   |---testing
+   |---tools
+   |---validator
+   |-----constraints
+   |-quick_tour
+
