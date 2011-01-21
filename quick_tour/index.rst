@@ -1,7 +1,7 @@
-Quick Tour
+Szybkie wprowadzenie
 ==========
 
-Get started fast with the Symfony2 Quick Tour:
+Zacznij od zaraz z "Szybkim wprowadzeniem do Symfony2".
 
 .. toctree::
    :maxdepth: 2
