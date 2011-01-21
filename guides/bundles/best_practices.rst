@@ -1,52 +1,48 @@
 .. index::
    single: Bundles; Best Practices
 
-Bundle Best Practices
+Bundle - Najlepsze praktyki
 =====================
 
-A bundle is a directory that has a well-defined structure and can host anything
-from classes to controllers and web resources. Even if bundles are very
-flexible, you should follow some best practices if you want to distribute them.
+Bundle jest katalogiem, który ma zdefiniowaną strukturę i może zawierać wszystko, 
+począwszy od klas kontrolerów oraz zasobów internetowych. Nawet jeśli bundle są bardzo 
+elastyczne, jeśli chcesz je rozprowadzać powinieneś przestrzegać pewnych najlepszych praktyk.
 
 .. index::
    pair: Bundles; Naming Conventions
 
-Bundle Name
------------
+Nazwa Bundla
+------------
 
-A bundle is also a PHP namespace, composed of several segments:
+Bundle to również namespace w PHP, składa się z kilku segmentów:
 
-* The **main namespace**: either ``Bundle``, for reusable bundles, or
-  ``Application`` for application specific bundles;
-* The **vendor namespace** (optional for ``Application`` bundles): something
-  unique to you or your company (like ``Sensio``);
-* *(optional)* The **category namespace(s)** to better organize a large set of
-  bundles;
-* The **bundle name**.
+* **Główna przestrzeń nazw**: ``Bundle``, dla wielokrotnie używalnych, lub ``Application`` dla używanych tylko w danej aplikacji.;
+* **Nazwa firmy/programisty**  (opcjonalne dla ``Application``): coś unikalnego dla Ciebie lub Twojej firmy (np. ``Sensio`` );
+* *(Opcjonalnie)* **nazwa kategorii** , dla lepszej organizacji dużych zestawów Bundli;
+* ""Nazwa Bundla**.
 
-The bundle name must follow these simple rules:
+Nazwa Bundla musi przestrzegać następujących zasad:
 
-* Use only alphanumeric characters and underscores;
-* Use a CamelCased name;
-* Use a descriptive and short name (no more than 2 words);
-* Prefix the name with the concatenation of the vendor and category
-  namespaces;
-* Suffix the name with ``Bundle``.
+* Używać tylko znaków alfanumerycznych i podkreśleń;
+* Używać stylu zapisu CamelCased;
+* Użyj opisowej i krótkiej nazwy (nie więcej niż 2 słowa);
+* Używać prefiksu składającego się z połączenia nazwy producenta i kategorii;
+* Używać sufiksu ``Bundle``.
 
-Some good bundle names:
+Trochę dobrych przykładów nazw:
 
 =================================== ==========================
-Namespace                           Bundle Name
+Namespace                           Nazwa Bundla
 =================================== ==========================
 ``Bundle\Sensio\BlogBundle``        ``SensioBlogBundle``
 ``Bundle\Sensio\Social\BlogBundle`` ``SensioSocialBlogBundle``
 ``Application\BlogBundle``          ``BlogBundle``
 =================================== ==========================
 
-Directory Structure
+Struktura katalogów
 -------------------
 
-The basic directory structure of a ``HelloBundle`` bundle must read as follows::
+Podstawowa struktura katalogów ``HelloBundle`` powinna wyglądać tak jak poniżej:
 
     XXX/...
         HelloBundle/
@@ -63,124 +59,131 @@ The basic directory structure of a ``HelloBundle`` bundle must read as follows::
                 public/
             Tests/
 
-The ``XXX`` directory(ies) reflects the namespace structure of the bundle.
+Katalog ``XXX`` odzwierciedla strukturę namespace'a bundla. 
 
-The following files are mandatory:
+Poniższe pliki są obowiązkowe:
 
 * ``HelloBundle.php``;
-* ``Resources/meta/LICENSE``: The full license for the code;
-* ``Resources/doc/index.rst``: The root file for the Bundle documentation.
+* ``Resources/meta/LICENSE``: Pełna licencja dla kodu bundla.
+* ``Resources/doc/index.rst``: Główny plik dokumentacji bundla.
 
 .. note::
 
-    These conventions ensure that automated tools can rely on this default
-    structure to work.
+    Ta konwencja zapewnia że automatyczne procesy Symfony będą działać z bundlem.
 
-The depth of sub-directories should be kept to the minimal for most used
-classes and files (2 levels at a maximum). More levels can be defined for
-non-strategic, less-used files.
 
-The bundle directory is read-only. If you need to write temporary files, store
-them under the ``cache/`` or ``log/`` directory of the host application. Tools
-can generate files in the bundle directory structure, but only if the generated
-files are going to be part of the repository.
+Głębokość struktury katalogów powinna być ograniczone do minimum dla najczęściej 
+używanych klas i plików (maksimum 2 poziomy). Wieksza ilość poziomów może być użyta 
+dla mało ważnych, rzadko używanych plików.
 
-The following classes and files have specific emplacements:
+
+Katalog bundla jest tylko do odczytu. Jeśli chcesz tworzyć pliki tymczasowe, umieszczaj je
+w  ``cache/`` lub ``log/`` hosta aplikacji. Narzędzia mogą generować pliki w strukturze 
+katalogów bundla, ale tylko wtedy, gdy wygenerowane pliki będą część repozytorium.
+
+Poniższe klasy i pliki mają ustalone rozmieszczenie.
 
 ========================= ===========================
-Type                      Directory
+Typ                       Katalog
 ========================= ===========================
-Controllers               ``Controller/``
-Translation files         ``Resources/translations/``
-Templates                 ``Resources/views/``
-Unit and Functional Tests ``Tests/``
-Web Resources             ``Resources/public/``
-Configuration             ``Resources/config/``
-Commands                  ``Command/``
+Kontrolery                ``Controller/``
+Pliki tłumaczeń           ``Resources/translations/``
+Szablony                  ``Resources/views/``
+Testy                     ``Tests/``
+Zasoby                    ``Resources/public/``
+Konfiguracja              ``Resources/config/``
+Polecenia                 ``Command/``
 ========================= ===========================
 
-Classes
+Klasy
 -------
 
-The bundle directory structure is used as the namespace hierarchy. For
-instance, a ``HelloController`` controller is stored in
-``Bundle/HelloBundle/Controller/HelloController.php`` and the fully qualified
-class name is ``Bundle\HelloBundle\Controller\HelloController``.
+Struktura katalogu bundla jest używana w hierarchii nazwy namespace'a. Na przykład,
+kontroler ``HelloController``znajduje się w 
+``Bundle/HelloBundle/Controller/HelloController.php`` i w pełni poprawną nazwą jego 
+klasy jest ``Bundle\HelloBundle\Controller\HelloController``.
 
-All classes and files must follow the Symfony2 coding :doc:`standards
-</contributing/code/standards>`.
+Wszystkie klasy i pliki muszą być zgodne ze :doc:`stylem kodowania</contributing/code/standards>` Symfony2 .
 
-Some classes should be seen as facades and should be as short as possible, like
-Commands, Helpers, Listeners, and Controllers.
+Niektóre klasy powinny być postrzegane jako fasady i powinny być jak najkrótsze, 
+np.  Polecenia, Helpery, Listenery, i Kontrolery.
 
-Classes that connects to the Event Dispatcher should be suffixed with
-``Listener``.
+Klasy, które łączą się do Event Dispatcher powinie być zapierac suffix ``Listener``.
 
-Exceptions classes should be stored in an ``Exception`` sub-namespace.
+Klas wyjątków powinne być przechowywane kategori ``Exception`` danego namespace'a.
 
-Vendors
+
+
+Bibliotek zewnętrzne
 -------
-
-A bundle must not embed third-party PHP libraries. It should rely on the
-standard Symfony2 autoloading instead.
 
 A bundle should not embed third-party libraries written in JavaScript, CSS, or
 any other language.
 
-Tests
+Bundle nie może zawierać zewnętrznych bibliotek PHP. Powinien polegać na 
+standardzie auto ładowania klas przez Symfony2.
+
+Pakiet nie powinien zawierać zewnętrznych bibliotek napisanych w JavaScript, 
+CSS, lub jakimkolwiek innym języku.
+
+Testy
 -----
 
-A bundle should come with a test suite written with PHPUnit and stored under
-the ``Tests/`` directory. Tests should follow the following principles:
+Bundle powinien być dostarczany z gotowym zestawem testów napisanych z wykorzystaniem PHPUnit 
+znajdujacych się w katalogu ``Tests/``. Testy powinne przestrzegać poniższych zasad:
 
-* The test suite must be executable with a simple ``phpunit`` command run from
-  a sample application;
-* The functional tests should only be used to test the response output and
-  some profiling information if you have some;
-* The code coverage should at least covers 95% of the code base.
+* Zestaw testowy musi być prosto uruchamialny poprzez polecenie ``phpunit``, 
+  uruchamiane z przykładowej aplikacji.
+* Testy funkcjonalne powinny być używane tylko do badania wysyłanej odpowiedzi oraz 
+  niektórych danych profilujących (jeśli jakieś posiadasz);
+* Kod powienien być pokryty testami przynajmniej w 95%.
 
 .. note::
    A test suite must not contain ``AllTests.php`` scripts, but must rely on the
    existence of a ``phpunit.xml.dist`` file.
+  
+  Zestaw testów nie musi zawierać AllTests.php, jednak musi opierać się na 
+  istnieniu pliku ``phpunit.xml.dist``.
 
-Documentation
+
+Dokumentacja
 -------------
 
-All classes and functions must come with full PHPDoc.
+Wszystkie klasy i funkcje muszą posiadać pełną dokumentację "phpDoc".
 
-Extensive documentation should also be provided in the :doc:`reStructuredText
-</contributing/documentation/format>` format, under the ``Resources/doc/``
-directory; the ``Resources/doc/index.rst`` file is the only mandatory file.
+Dokładną dokumentację powinna być dostarczana również w formacie :doc:`reStructuredText
+</contributing/documentation/format>`, w  katalogu ``Resources/doc/``; 
+Plik ``Resources/doc/index.rst`` jest obowiązkowy.
 
-Controllers
+Kontrolery
 -----------
 
-Controllers in a bundle must not extend
-:class:`Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller`. They can
-implement
-:class:`Symfony\\Foundation\\DependencyInjection\\ContainerAwareInterface` or
-extend :class:`Symfony\\Foundation\\DependencyInjection\\ContainerAware`
-instead.
+Kontrolery w bundlu nie muszą dziedziczyć po 
+:class:`Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller`. 
+Mogą implementować
+:class:`Symfony\\Foundation\\DependencyInjection\\ContainerAwareInterface` lub 
+dziedziczyć po :class:`Symfony\\Foundation\\DependencyInjection\\ContainerAware`.
 
 .. note::
 
-    If you have a look at
-    :class:`Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller` methods,
-    you will see that they are only nice shortcuts to ease the learning curve.
+    Jesli szukasz metod 
+    :class:`Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller`,
+    zobaczysz że są one tylko ładnymi skrótami do `Symfony\\Foundation\\DependencyInjection\\ContainerAwareInterface`
+    do łatwiejszej nauki.
 
-Templates
+Szablony
 ---------
 
-If a bundle provides templates, they should be defined in plain PHP. A bundle
-must not provide a main layout, but extend a default ``base`` template (which
-must provide two slots: ``content`` and ``head``).
+Jeśli bundel posiada szablony, to powinne one być napisane w PHP. Bundle nie musi 
+dostarczać głównego układu, jednak musi wtedy dziedziczyć po ``domyślnym`` (który 
+musi dostarczać dwa sloty: `content`` i ``head``).
 
 .. note::
 
-    The only other template engine supported is Twig, but only for specific
-    cases.
+    Jedynym innym wspieranym silnikiem szablonów jest Twig, jednak tylko 
+    w wybranych przypadkach.
 
-Translation Files
+Pliki tłumaczeń
 -----------------
 
 If a bundle provides message translations, they must be defined in the XLIFF
