@@ -1,18 +1,17 @@
 .. index::
    single: Cache
 
-HTTP Cache
+Cache HTTP
 ==========
 
-The best way to improve the performance of an application is probably to cache
-its output and bypass it altogether. Of course, this is not possible for
-highly dynamic websites, or is it? This document will show you how Symfony2
-cache system works and why we think this is the best possible approach.
+Najlepszym sposobem poprawy wydajności aplikacji jest prawdopodobnie użycie 
+cache do pominięcia samej aplikacji. To oczywiście nie jest możliwe dla wysoce 
+dynamicznych aplikacji webowych, prawda? Ten dokument pokaże, jak działa 
+system cache'u Symfony2 i dlaczego uważamy go za najlepsze podejście.
 
-Symfony2 cache system relies on the simplicity and power of the HTTP cache as
-defined in the HTTP specification. Basically, if you already know HTTP
-validation and expiration caching models, you are ready to use most of the
-Symfony2 cache system.
+Cache Symfony2 polega na prostocie i sile cache HTTP, tak, jak jest on 
+zdefiniowany w specyfikacji HTTP. Jeśli znasz modele walidacji i wygaszania 
+cache'u HTTP, jesteś gotowy, by używać większości elementów cache Symfony2.
 
 .. index::
    single: Cache; Types of
@@ -20,23 +19,24 @@ Symfony2 cache system.
    single: Cache; Reverse Proxy
    single: Cache; Gateway
 
-Kinds of Caches
+Rodzaje cache
 ---------------
 
-HTTP cache headers are consumed and interpreted by three different kind of
-caches:
+Nagłówki cache'u HTTP są przetwarzane i interpretowane przez trzy różne 
+rodzaje cache:
 
-* *Browser caches*: Every browser comes with its own local cache that is
-  mainly useful for when you hit "back" or when images are reused throughout a
-  website;
+* *Cache przeglądarki*: Każda przeglądarka posiada własny lokalny cache, 
+  który jest używany głównie wtedy, gdy przechodzisz wstecz, lub w przypadku, 
+  gdy obrazi są ponownie użyte na stronie;
 
-* *Proxy caches*: A proxy is a *shared* cache as many people can be behind a
-  single one. It's usually installed by large corporations and ISPs to reduce
-  latency and network traffic.
+* *Cache proxy*: Proxy jest *współdzielonym* cache'em - wiele osób może 
+  znajdować się za proxy. Jest zazwyczaj instalowany przez duże korporacje i 
+  dostawców internetu by zredukować opóźnienie i obciążenie sieci.
 
-* *Gateway caches*: Like a proxy, it's also a shared cache but on the server
-  side. Installed by network administrators, it makes websites more scalable,
-  reliable and performing better (CDNs like Akamaï are gateway caches).
+* *Cache bramy*: Podobnie jak proxy, jest również dzielonym cache'em, lecz 
+  po stronie serwera. Jest instalowany przez administratorów sieciowych, 
+  dzięki nim zwiększa się skalowalność, niezawodność i wydajność stron 
+  (CDN-y [ang. Content delivery network) np. Akamaï to również Cache bramy)
 
 .. note::
 
