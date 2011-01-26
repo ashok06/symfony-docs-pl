@@ -5,8 +5,8 @@ Struktura katalogów
    |---community
    |---documentation
    |-guides
-   |---bundles (P.M)
-   |---cache
+   |---bundles 	(P.M)
+   |---cache 	(fizyk)
    |---doctrine
    |-----dbal
    |-----migrations

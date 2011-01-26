@@ -1,35 +1,27 @@
-The Big Picture
+Obraz całości
 ===============
 
-So, you want to try out Symfony2 but only have 10 minutes or so? This first
-part of this tutorial has been written for you. It explains how to get started
-fast with Symfony2 by showing you the structure of a simple ready-made
-project.
+Tak więc, chciałbyś wypróbować Symfony2 ale masz tylko 10 minut? 
+Pierwsza część tego tutoriala została napisana właśnie dla Ciebie!
+Tłumaczy jak szybko zacząć pracę z Symfony2 pokazując Ci strukturę prostego, gotowego projektu. 
 
-If you have ever used a web framework before, you should feel right at home
-with Symfony2.
+Jeśli kiedykolwiek używałeś framework'a webowego to z Symfony2 powinieneś czuć się jak w domu.
 
 .. index::
    pair: Sandbox; Download
 
-Downloading and Installing Symfony2
+Pobieranie i instalacja Symfony2
 -----------------------------------
 
-First, check that you have at least PHP 5.3.2 installed and correctly
-configured to work with a web server like Apache.
+Pierwsze, sprawdź czy masz ściągnięte i poprawnie skonfigurowane do pracy z serwerem(takim jak np. Apache) PHP w wersji co najmniej 5.3.2.  
 
-Ready? Let's start by downloading Symfony2. To get started even faster, we are
-going to use the "Symfony2 sandbox". It is a Symfony2 project where all the
-required libraries and some simple controllers are already included; the basic
-configuration is also already done. The great advantage of the sandbox over
-other types of installation is that you can start experimenting with Symfony2
-immediately.
+Gotowy? Zacznijmy od ściągnięcia Symfony2. Aby rozpocząć jeszcze szybciej, użyjemy "Symfony2 sandbox".
+Jest to projekt Symfony2 w którym znajdują się wszystkie wymagane biblioteki i parę prostych kontrolerów, ponadto podstawowa konfiguracja jest już ukończona. Największą zaletą sandbox'a ponad innymi typami instalacji jest to, że możesz od razu zacząć z nim eksperymentować. 
 
-Download the `sandbox`_, and unpack it in your root web directory. You
-should now have a ``sandbox/`` directory::
+Pobierz `sandbox`_ i rozpakuj go do Twojego głównego katalogu. Powinieneś mieć teraz katalog  "Sandbox/":
 
-    www/ <- your web root directory
-        sandbox/ <- the unpacked archive
+    www/ <- Twój folder główny
+        sandbox/ <- rozpakowane archiwum
             app/
                 cache/
                 config/
@@ -46,64 +38,54 @@ should now have a ``sandbox/`` directory::
 .. index::
    single: Installation; Check
 
-Checking the Configuration
+Sprawdzanie konfiguracji
 --------------------------
 
-To avoid some headaches further down the line, check that your configuration
-can run a Symfony2 project smoothly by requesting the following URL:
+Aby uniknąć późniejszych problemów, sprawdź czy Twoja konfiguracja może płynnie uruchomić projekt Symfony2, otwierając podany adres:
 
     http://localhost/sandbox/web/check.php
 
-Read the script output carefully and fix any problem that it finds.
+Odczytaj uważnie dane wyjściowe skryptu i napraw problemy, które zostały znalezione.
 
-Now, request your first "real" Symfony2 webpage:
+Teraz, otwórz swoją pierwszą "prawdziwą" stronę opartą na Symfony2:
 
     http://localhost/sandbox/web/app_dev.php/
 
-Symfony2 should congratulate you for your hard work so far!
+Symfony2 powinno pogratulować Ci Twojej dotychczasowej pracy!
 
-Creating your first Application
+Tworzenie Twojej pierwszej aplikacji
 -------------------------------
 
-The sandbox comes with a simple Hello World ":term:`application`" and that's
-the application we will use to learn more about Symfony2. Go to the following
-URL to be greeted by Symfony2 (replace Fabien with your first name):
+W sandboxie dołączona jest prosta ":term:`aplikacja`" Hello World i to jest właśnie aplikacja, które użyjemy aby dowiedzieć się więcej o Symfony2.
+Odwiedź podany adres, aby zostać przywitanym przez Symfony2 (zamień Fabien na swoje imię):
 
     http://localhost/sandbox/web/app_dev.php/hello/Fabien
 
-What's going on here? Let's dissect the URL:
+Co się tutaj dzieje? Przyjrzyjmy się adresowi URL:
 
 .. index:: Front Controller
 
-* ``app_dev.php``: This is a "front controller". It is the unique entry point
-  of the application and it responds to all user requests;
+* ``app_dev.php``: Jest to "front controller" - wyjątkowy punkt wejściowy aplikacji, który odpowiada na wszystkie zapytania użytkownika;
 
-* ``/hello/Fabien``: This is the "virtual" path to the resource the user wants
-  to access.
+* ``/hello/Fabien``: Jest to "wirtualna" ścieżka zasobu do którego użytkownik chce mieć dostęp. 
 
-Your responsibility as a developer is to write the code that maps the user
-request (``/hello/Fabien``) to the resource associated with it (``Hello
+Jako deweloper jesteś odpowiedzialny za napisanie kodu, który mapuje zapytanie użytkownika (``/hello/Fabien``) z zasobem powiązanym z nim  (``Hello
 Fabien!``).
 
 .. index::
    single: Configuration
 
-Configuration
+Konfiguracja
 ~~~~~~~~~~~~~
 
-But how does Symfony2 route the request to your code? Simply by reading some
-configuration file.
+W jaki sposób Symfony2 kieruje zapytanie do Twojego kodu? Po prostu przez odczytanie pewnego pliku konfiguracyjnego. 
 
-All Symfony2 configuration files can be written in either PHP, XML, or `YAML`_
-(YAML is a simple format that makes the description of configuration settings
-very easy).
+Wszystkie pliki konfiguracyjne Symfony2 mogą być zapisane zarówno w PHP, XML, jak i w `YAML`_(YAML jest to prosty format dzięki któremu zapis plików konfiguracyjnych jest bardzo prosty).
 
 .. tip::
 
-    The sandbox defaults to YAML, but you can easily switch to XML or PHP by
-    editing the ``app/AppKernel.php`` file. You can switch now by looking at
-    the bottom of this file for instructions (the tutorials show the
-    configuration for all supported formats).
+   Domyślnie sandbox używa YAML, ale możesz łatwo przełączyć się na XML lub PHP przez edycje pliku ``app/AppKernel.php`.
+   Możesz przełączyć się teraz, patrząc na instrukcje u dołu tego pliku(tutoriale pokazują konfigurację dla wszystkich obsługiwanych formatów).
 
 .. index::
    single: Routing
@@ -112,7 +94,7 @@ very easy).
 Routing
 ~~~~~~~
 
-So, Symfony2 routes the request by reading the routing configuration file:
+Tak więc, symfony2 kieruje zapytanie przez odczyt pliku konfiguracyjnego routingu:
 
 .. configuration-block::
 
@@ -156,9 +138,8 @@ So, Symfony2 routes the request by reading the routing configuration file:
 
         return $collection;
 
-The first few lines of the routing configuration file define which code to
-call when the user requests the "``/``" resource. More interesting is the last
-part, which imports another routing configuration file that reads as follows:
+Pierwsze parę linii pliku konfiguracyjnego routingu definiuje, który kod wywołać gdy użytkownik żąda zasobu  "``/``".
+Bardziej interesująca jest ostatnia część, która importuje kolejny plik konfiguracyjny routingu, wyglądający tak:
 
 .. configuration-block::
 
@@ -196,19 +177,16 @@ part, which imports another routing configuration file that reads as follows:
 
         return $collection;
 
-Here we go! As you can see, the "``/hello/:name``" resource pattern (a string
-beginning with a colon like ``:name`` is a placeholder) is mapped to a
-controller, referenced by the ``_controller`` value.
+No i lecimy! Jak widzisz, wzór zasobu: "``/hello/:name``" (gdzie dwukropek na początek stringu oznacza, że jest to wartość zastępcza - placeholder ) jest zmapowany do kontrolera, określonego w wartości klucza ``_controller`.
 
 .. index::
    single: Controller
    single: MVC; Controller
 
-Controllers
+Kontrolery
 ~~~~~~~~~~~
 
-The controller is responsible for returning a representation of the resource
-(most of the time an HTML one) and it is defined as a PHP class:
+Kontroler jest odpowiedzialny za zwrócenie reprezentacji zasobu(głównie w postaci HTML) i jest zdefiniowany jako klasa PHP:
 
 .. code-block:: php
    :linenos:
@@ -230,11 +208,9 @@ The controller is responsible for returning a representation of the resource
         }
     }
 
-The code is pretty straightforward but let's explain this code line by line:
+Kod jest dosyć prosty, ale wytłumaczmy go linijka po linijce:
 
-* *line 3*: Symfony2 takes advantage of new PHP 5.3 features and as such, all
-  controllers are properly namespaced (the namespace is the first part of the
-  ``_controller`` routing value: ``HelloBundle``).
+* *linia 3*: Symfony 2 korzysta z nowych możliwości PHP 5.3, tak więc kontrolery są poprawnie przypisane do przestrzeni nazw(Przestrzenią nazw jest pierwsza część wartości ``_controller` z routingu, w tym przypadku: ``HelloBundle).
 
 * *line 7*: The controller name is the concatenation of the second part of the
   ``_controller`` routing value (``Hello``) and ``Controller``. It extends the
